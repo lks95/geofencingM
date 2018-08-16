@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp"
+    android:orientation="vertical"
+    tools:context="com.adesso.lklein.geofencing.MainActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:id="@+id/lat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Lat:"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lon"
+            android:layout_weight="0.5"
+            android:text="Long:"
+            android:textColor="@color/white" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/locationbutton"
+            android:minHeight="10dp"
+            android:minWidth="10dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="-50dp"
+            android:src="@android:drawable/ic_menu_mapmode"
+            android:scaleType="centerInside"
+            android:background="@null"
+            />
+
+
+
+
+    </LinearLayout>
+
+
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:id="@+id/googlesearch"
+        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"/>
+
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="430dp"
+         />
+
+    <SeekBar
+        android:id="@+id/seekBarID"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:max="10"
+        android:min="1"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textviewseekbar"
+
+        />
+
+
+</LinearLayout>
+

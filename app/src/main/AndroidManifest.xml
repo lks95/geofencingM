@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.adesso.lklein.geofencing">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- <service android:name=".GeoFenceTranisitionService"/> -->
+
+            <meta-data
+                android:name="com.google.android.gms.version"
+                android:value="@integer/google_play_services_version" />
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCNaeQcn5SktkYXl4PvyIc2fiTpQJG9pCE" />
+            <!--android:value="AIzaSyDse2FC0OdLnJupnFnJ-vDDaM6L6SuDUU4" />-->
+
+   <!--     <activity android:name="timetracking.Timetracking"></activity>-->
+        <activity android:name="timetracking.ListData"></activity>
+
+        <activity android:label="@string/app_name" android:name="timetracking.Timetracking"></activity>
+        <activity android:name="timetracking.EditData"></activity>
+
+        <activity android:name="room.room.CreateProjektActivity"
+            android:exported="true"/>
+        <activity android:name="room.room.UpdateProjektActivity"></activity>
+        <activity android:name="room.room.RoomMain"></activity>
+        <activity android:name="com.adesso.lklein.geofencing.MapsActivity"></activity>
+
+
+    </application>
+
+</manifest>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/geofence" android:title="Create Geofence" app:showAsAction="never" />
+    <item android:id="@+id/clear" android:title="Clear Geofence" app:showAsAction="never" />
+    <item android:id="@+id/timetracking" android:title="Time Tracking" app:showAsAction="never"/>
+    <item android:id="@+id/viewroomdata" app:showAsAction="never"
+        android:title="View Room Data"></item>
+    <item android:id="@+id/edittimetracking" app:showAsAction="never" android:title="Edit Time Tracking" />
+    <item android:id="@+id/login" app:showAsAction="never" android:title="Log In"></item>
+    <item android:id="@+id/zeigDATEN" app:showAsAction="never" android:title="ZEIGDATEN"/>
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="test"
+        app:showAsAction="never" />
+</menu>

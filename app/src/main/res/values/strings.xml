@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">GeofencingApp</string>
+    <string name="projekt_name">Projektname</string>
+    <string name="arbeitername">Name</string>
+    <string name="standort">Location</string>
+    <string name="save">Save</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="created_on">Created On</string>
+</resources>
