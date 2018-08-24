@@ -31,6 +31,7 @@ public class Projekt {
         return name;
     }
 
+
     public void setName(String workername) {
         this.name = name;
     }

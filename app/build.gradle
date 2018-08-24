@@ -45,7 +45,10 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
 
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    //noinspection GradleCompatible
     compile 'com.google.android.gms:play-services-location:9.0.1'
+    //edit 16.08.
+   /* compile 'com.google.android.gms:play-services:12.0.1'*/
     implementation 'com.android.support:design:26.1.0'
     implementation files('libs/ormlite-android-5.1.jar')
     implementation files('libs/ormlite-core-5.1.jar')

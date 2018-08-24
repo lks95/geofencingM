@@ -10,7 +10,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutManager;
 
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.adesso.lklein.geofencing.R;
 
@@ -37,6 +39,7 @@ public class RoomMain extends AppCompatActivity {
         setContentView(R.layout.room_main);
 
         mProjektDao = Room.databaseBuilder(this, AppDatabase.class, "db-projekte" )
+                .fallbackToDestructiveMigration()
                 .allowMainThreadQueries()
                 .build()
                 .getDao();
@@ -78,7 +81,9 @@ public class RoomMain extends AppCompatActivity {
     }
 
     private void loadProjekte(){
+        Toast.makeText(this, "Items stored: " +mProjektDao.getProjekte().size(), Toast.LENGTH_LONG);
         mProjektRecylcerAdapter.updateData(mProjektDao.getProjekte());
+
     }
 
 
@@ -94,4 +99,10 @@ public class RoomMain extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+        loadProjekte();
+    }
 }

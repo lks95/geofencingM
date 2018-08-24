@@ -32,6 +32,7 @@ public class CreateProjektActivity extends AppCompatActivity {
         setContentView(R.layout.room_create_activity);
 
         mRoomDao = Room.databaseBuilder(this, AppDatabase.class, "db-projekt")
+                .fallbackToDestructiveMigration()
                 .allowMainThreadQueries()
                 .build()
                 .getDao();

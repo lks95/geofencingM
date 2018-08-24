@@ -12,15 +12,22 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
+import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Layout;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,6 +57,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.logging.Logger;
+
 import room.room.CreateProjektActivity;
 import room.room.RoomMain;
 import timetracking.EditData;
@@ -72,6 +81,12 @@ public class MainActivity extends AppCompatActivity
     private TextView tv, textLong;
     private MapFragment mapFragment;
     private static final String NOTIFICATION_MSG = "NOTIFICATION MSG";
+
+    //autocompletefragment
+    PlaceAutocompleteFragment placeAutocompleteFragment;
+
+    //currentlocation
+    private LocationManager mLocationManager;
 
     //gpstracker
     private GPSTracker gpsTracker;
@@ -96,7 +111,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,6 +122,18 @@ public class MainActivity extends AppCompatActivity
         initGMaps();
         createGoogleApi();
         seebar();
+
+        ImageButton IB = findViewById(R.id.locationbutton);
+        IB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //need to paste in here
+                //the code which fits
+                //the currentlocation
+            }
+        });
+
+
 
 
     }
@@ -202,11 +228,13 @@ public class MainActivity extends AppCompatActivity
                Intent myIntent = new Intent(MainActivity.this, CreateProjektActivity.class);
                MainActivity.this.startActivity(myIntent);
             }
-
+            //fuer room
             case R.id.zeigDATEN: {
                 Intent myIntent = new Intent(MainActivity.this, RoomMain.class);
                 MainActivity.this.startActivity(myIntent);
             }
+
+
 
 
         }
@@ -259,9 +287,14 @@ public class MainActivity extends AppCompatActivity
     public void onMapReady(GoogleMap googleMap){
         Log.d(TAG, "onMapReady()");
         map = googleMap;
+
+
         map.setOnMapClickListener(this);
         map.setOnMarkerClickListener(this);
     }
+
+
+
 
     public void onMapClick(LatLng latLng){
         Log.d(TAG, "onMapClick(" +latLng +")");
@@ -284,7 +317,8 @@ public class MainActivity extends AppCompatActivity
                 .setInterval(UPDATE_INTERVAL)
                 .setFastestInterval(FASTEST_INVERVAL);
         if(checkPermission())
-            LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, (com.google.android.gms.location.LocationListener) this);
+            LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest,
+                    (com.google.android.gms.location.LocationListener) this);
     }
 
     public void onLocationChanged(Location location){
@@ -331,10 +365,9 @@ public class MainActivity extends AppCompatActivity
 
     private void writeActualLocation(Location location){
 
-        tv.setText("Lat: " +location.getLatitude());
-        textLong.setText("Long: " +location.getLongitude());
-
-        markerLocation(new LatLng(location.getLatitude(), location.getLongitude()));
+            tv.setText("Lat: " + location.getLatitude());
+            textLong.setText("Long: " + location.getLongitude());
+            markerLocation(new LatLng(location.getLatitude(), location.getLongitude()));
 
     }
 
@@ -534,4 +567,42 @@ public class MainActivity extends AppCompatActivity
             geoFenceLimits.remove();
         }
     }
+
+
+    //for current location
+
+    /*public static final int LOCATION_UPDATE_MIN_TIME = 5000;
+    public static final int LOCATION_UPDATE_MIN_DISTANCE = 10;
+
+    private LocationListener mLocationListener = new LocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {
+            if(location != null){
+                Logger.d(String.format("%f, %f", location.getLatitude(), location.getLongitude()));
+                markerLocation(LatLng);
+                mLocationManager.removeUpdates(mLocationListener);
+            }
+        }
+    }
+    private void getCurrentLocation(){
+
+        boolean isGPSEnabled = mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        boolean isNetworkEneabled = mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+        Location location = null;
+
+        if(!(isGPSEnabled || isNetworkEneabled)){
+            Toast.makeText(MainActivity.this, "GPS or Network is not enabeled", Toast.LENGTH_LONG).show();
+        } else {
+            if(isNetworkEneabled) {
+                mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
+                        LOCATION_UPDATE_MIN_TIME, LOCATION_UPDATE_MIN_DISTANCE, mLocationListener);
+            }
+        }
+
+    }
+*/
+
+
+
 }

@@ -41,17 +41,16 @@
             android:textColor="@color/white" />
 
         <ImageButton
+            android:id="@+id/locationbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/locationbutton"
-            android:minHeight="10dp"
-            android:minWidth="10dp"
             android:layout_gravity="right"
             android:layout_marginTop="-50dp"
-            android:src="@android:drawable/ic_menu_mapmode"
-            android:scaleType="centerInside"
             android:background="@null"
-            />
+            android:minHeight="10dp"
+            android:minWidth="10dp"
+            android:scaleType="centerInside"
+            android:src="@android:drawable/ic_menu_mapmode" />
 
 
 
